@@ -190,7 +190,7 @@ const App = () => {
             {/* We use index as the key instead, also, the src is now item.gifLink */}
             {gifList.map((item, index) => (
               <div className="gif-item" key={index}>
-                <img src={item.gifLink} />
+                <img alt="giphy" src={item.gifLink} />
               </div>
             ))}
           </div>
@@ -199,13 +199,7 @@ const App = () => {
     }
   }
 
-  useEffect(() => {
-    const onLoad = async () => {
-      await checkIfWalletIsConnected();
-    };
-    window.addEventListener('load', onLoad);
-    return () => window.removeEventListener('load', onLoad);
-  }, []);
+ 
 
   const getGifList = async () => {
     try {
@@ -222,11 +216,21 @@ const App = () => {
     }
   }
 
+   useEffect(() => {
+    const onLoad = async () => {
+      await checkIfWalletIsConnected();
+    };
+    window.addEventListener('load', onLoad);
+    return () => window.removeEventListener('load', onLoad);
+  }, []);
+
   useEffect(() => {
     if (walletAddress) {
       console.log('Fetching GIF list...');
-      getGifList()
+      
+      getGifList();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletAddress]);
 
   return (
@@ -246,6 +250,7 @@ const App = () => {
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a
+            
             className="footer-text"
             href={TWITTER_LINK}
             target="_blank"
