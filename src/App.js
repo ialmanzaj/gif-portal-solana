@@ -237,7 +237,7 @@ const App = () => {
     <div className="App">
       <div className={walletAddress ? 'authed-container' : 'container'}>
         <div className="header-container">
-          <p className="header">🖼 NTFs GIF Portal</p>
+          <p className="header">🖼 NTFs GIF Portal by Isaac</p>
           <p className="sub-text">
             View your favorite NFTs GIF collection in the metaverse ✨
           </p>
